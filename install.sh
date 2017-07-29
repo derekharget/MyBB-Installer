@@ -61,4 +61,20 @@ rm -rf /usr/local/nginx/html/index.html
 #Move Directory to /usr/local/nginx/html/
 cp -rf ./* /usr/local/nginx/html/
 
-cd /usr/local/nginx/html/
+cd /usr/local/nginx/html/inc/
+
+mv config.default.php config.php
+
+cd ..
+
+chmod 666 ./inc/config.php ./inc/settings.php
+chmod 666 ./inc/languages/english/*.php ./inc/languages/english/admin/*.php
+chmod 777 ./cache/ ./cache/themes/ ./uploads/ ./uploads/avatars/ ./admin/backups/
+
+echo "MyBB Installation Complete"
+
+echo "Adjusting Firewall Permissions"
+firewall-cmd --permanent --zone=public --add-service=http > /dev/null
+firewall-cmd --reload > /dev/null
+
+
