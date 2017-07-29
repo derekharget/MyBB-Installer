@@ -104,4 +104,7 @@ echo "Adjusting Firewall Permissions"
 firewall-cmd --permanent --zone=public --add-service=http > /dev/null
 firewall-cmd --reload > /dev/null
 
+echo "Cleaning Up Install"
 
+cd /root
+rm -rf ./temp
